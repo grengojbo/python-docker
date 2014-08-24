@@ -58,10 +58,8 @@ RUN pip install gunicorn
 RUN pip install mysql-python
 RUN pip install Pillow
 
-#USER root
-#ADD .bash_aliases /root/.bash_aliases
-ADD .synergy.conf /root/.synergy.conf
-ADD .tmux.conf /root/.tmux.conf
+#ADD .synergy.conf /root/.synergy.conf
+#ADD .tmux.conf /root/.tmux.conf
 
 # Sharing sshd port to host
 #EXPOSE 22
