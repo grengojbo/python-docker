@@ -1,16 +1,10 @@
 # Python server host
 #
-# VERSION               0.1.2
+# VERSION               0.1.3
 
 FROM  grengojbo/base:latest
 MAINTAINER Oleg Dolya "oleg.dolya@gmail.com"
 
-# Get updates
-RUN apt-get update
-RUN apt-get upgrade -y
-
-# Install software
-#RUN apt-get install --no-install-recommends -y ssh strace tcpdump nmap traceroute nload psmisc procps subversion file vim less bind9-host tmux
 RUN apt-get update && apt-get install -y \
         autoconf \
         build-essential \
@@ -32,21 +26,16 @@ RUN apt-get update && apt-get install -y \
         libssl-dev \
         libxml2-dev \
         libxslt-dev \
-        zlib1g-dev
-
-RUN apt-get update && apt-get install -y \
+        zlib1g-dev \
         bzr \
         cvs \
         git \
         mercurial \
-        subversion
-RUN apt-get install -y htop cmake diffstat bison curl python-software-properties ssh strace tcpdump nmap traceroute nload psmisc procps file vim less tmux
-
-RUN apt-get install -y python ipython python-cjson python-dev python-doc python-lxml dnsutils gdal-bin libevent-dev libfreetype6 libfreetype6-dev libgeos-dev libjpeg8 libplist-utils libproj-dev libtiff4-dev libjpeg8-dev liblcms1-dev libwebp-dev python-setuptools python-mako python-twisted python-twill python-gevent python-mysqldb
-
-RUN apt-get -y autoremove
-RUN apt-get -y autoclean
-RUN apt-get -y clean
+        subversion bison ssh psmisc procps \
+        python python-cjson python-dev python-lxml gdal-bin libevent-dev libfreetype6 \
+        libfreetype6-dev libgeos-dev libjpeg8 libplist-utils libproj-dev libtiff4-dev \
+        libjpeg8-dev liblcms1-dev libwebp-dev python-setuptools python-mako python-gevent python-mysqldb \
+        --no-install-recommends && apt-get -y autoremove && apt-get -y autoclean && apt-get -y clean
 
 RUN ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/
 RUN ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib/
